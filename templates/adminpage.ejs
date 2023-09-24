@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdminPage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <style>
+        img {
+            width: 7cm;
+            height: 10cm;
+        }
+        
+        h1 {
+            text-align: center;
+            color: black;
+        }
+        
+        .nje {
+            content: "";
+            display: block;
+            margin: 0 auto;
+            width: 40%;
+            padding-top: 20px;
+            border-bottom: 1px solid black;
+        }
+    </style>
+    <!-- link for the swiper  -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+</head>
+<body>
+    <header class="header">
+
+        <div class="header-1">
+
+            <a href="#" class="logo"> <i class="fas fa-book"></i> bookflix and chill </a>
+
+            <form action="" class="search-form">
+                <input type="search" name="" placeholder="Search here..." id="search-box">
+                <label for="search-box" class="fas fa-search"></label>
+            </form>
+
+            <div class="icons">
+                <div id="search-btn" class="fas fa-search"></div>
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-shopping-cart"></a>
+                <div id="login-btn" class="fas fa-user"></div>
+            </div>
+
+        </div>
+
+        <div class="header-2">
+            <nav class="navbar">
+                <a href="home" style="margin: auto;"">home</a>
+
+
+
+            </nav>
+        </div>
+
+    </header>
+    <head>
+        
+        <title>Employee Database System</title>
+        <input type="button" class="btn" style="margin-left: 1000px;" onclick="location.href='add-products';" value="Add products" />
+        <div class="container mt-5">
+            <section>
+                <h3>Book Details</h3>
+           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                 <tr style="text-align: center;">
+                    <th>Product-ID</th>
+                    <th>name</th>
+                    <th>Author</th>
+                    <th>price</th>
+                    <th>Image</th>
+                    <th>Operations</th>
+                 </tr>
+              </thead>
+  
+              <tbody>
+  <% x.forEach((y)=>{%>
+                 <tr style="text-align: center;">
+                    <td><%= y.id%></td>
+                    <td style="color:rgb(0, 0, 0); font-size:20px;"><%= y.name%></td>
+                    <td><%= y.author %></td>
+                    <td><%= y.price %></td>
+                    <td ><img style="height: 100px;width: 100px;" src="image/<%= y.image %>" alt="<%= y.image %>"></td>
+                    <td>
+                        <a class="btn btn-primary" href="/edit1/<%= y.id%>">Edit</a>
+                       
+                       <form style="display: inline;" action="/delete1/<%= y.id%>?_method=DELETE" method="POST">
+                         
+                          <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">Delete</button>
+                       </form>
+                    </td>
+                 </tr>
+                 <%})%>
+              </tbody>
+           </table>
+        </section>
+        <section>
+            <h3>user details</h3>
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                   <tr style="text-align: center;">
+                      <th>name</th>
+                      <th>Phone Number</th>
+                      <th>email</th>
+                   </tr>
+                </thead>
+    
+                <tbody>
+    <% z.forEach((y)=>{%>
+                   <tr style="text-align: center;">
+                      <td><%= y.name%></td>
+                      <td><%= y.phone%></td>
+                      <td><%= y.email %></td>
+                      
+                      <td>
+                          <a class="btn btn-primary" href="/edit2/<%= y.email%>">Edit</a>
+                         
+                         <form style="display: inline;" action="/delete2/<%= y.email%>?_method=DELETE" method="POST">
+                           
+                            <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">Delete</button>
+                         </form>
+                      </td>
+                   </tr>
+                   <%})%>
+                </tbody>
+             </table>
+        </section>
+        </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<!-- custom js file link  -->
+<script src="css/javascript.js"></script>
+
+</body>
